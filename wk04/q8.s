@@ -37,11 +37,11 @@ points_loop_cond:
 					
 	# find the address of &my_points[i]
 	mul     $t4, $t0, SIZE_OF_ELEM  # i * 8 
-	la      $t5, my_points
+	la      $t5, my_points # START
 	add     $t5, $t5, $t4           # &my_points[i]
 	
-	lw      $t1, OFFSET_ROW($t5)
-	lw      $t2, OFFSET_COL($t5)
+	lw      $t1, OFFSET_ROW($t5) # START.ROW = 0  lw 	$t1, start + 0 = start.row
+	lw      $t2, OFFSET_COL($t5) # OFFSET_COL = 4 lw 	$t1, start + 4 = start.col 
 	
 					# int height = topography_grid[row][col];
 

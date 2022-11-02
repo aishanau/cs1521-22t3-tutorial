@@ -6,7 +6,7 @@
 
 // testing
 int main(void) {
-    int8_t number = 0b00001111;
+    int16_t number = 0b00001111;
     // 0b 00001111 number
     // 0b 01000000 <- set mask
     // number | set_mask
@@ -19,8 +19,8 @@ int main(void) {
     // 0b 00001000
     // to check if a bit is set, we use & 
     // to set a bit in a number, we use |
-    for (int bit = 0; bit < 8; bit++) {
-        int current_bit_mask = 1 << (8 - 1 - bit);
+    for (int bit = 0; bit < 16; bit++) {
+        int current_bit_mask = 1 << (16 - 1 - bit);
 
         int current_bit = number & current_bit_mask;
         // if the bit is 1 -> print 1 
