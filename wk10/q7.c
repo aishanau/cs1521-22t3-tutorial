@@ -2,6 +2,8 @@
 #include <pthread.h>
 
 int global_total = 0;
+// how do we incrememnt a global var in mips?
+
 
 void *add_5000_to_counter(void *data) {
     for (int i = 0; i < 5000; i++) {
@@ -10,6 +12,10 @@ void *add_5000_to_counter(void *data) {
         
         // increment the global total by 1
         global_total++;
+        // lw $t0, global_total
+        // addi $t0, $t0, 1
+        // sw $t0, global_total
+
     }
 
     return NULL;

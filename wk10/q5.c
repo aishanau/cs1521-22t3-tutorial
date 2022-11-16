@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <pthread.h>
+#include <unistd.h>
 
 void *thread_run(void *data) {
     printf("Hello from thread!\n");
@@ -17,5 +18,7 @@ int main(void) {
                     // given in the `void *data` argument above
     );
 
+    pthread_join(thread, NULL);
+    
     return 0;
 }

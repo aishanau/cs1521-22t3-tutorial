@@ -1,6 +1,8 @@
 #include <stdio.h>
 #include <pthread.h>
 
+pthread_mutex_t mutex = PTHREAD_MUTEX_INITIALIZER;
+
 int global_total = 0;
 
 void *add_5000_to_counter(void *data) {
@@ -9,7 +11,11 @@ void *add_5000_to_counter(void *data) {
         nanosleep (&(struct timespec){.tv_nsec = 1}, NULL);
         
         // increment the global total by 1
+        // lock the resource so that no other thread can access 
+        pthread_mutex_lock(&mutex);
         global_total++;
+        pthread_mutex_unlock(&mutex);
+        // unlock our resource so other threads can use if needed
     }
 
     return NULL;
